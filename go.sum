@@ -1,3 +1,5 @@
+github.com/beranek1/ads-bridge-go-lib v0.0.0-20221206150019-7c3a071ccfe1 h1:wA4toa1scwir7WlDKAy3VshH2TOK9x68QfLOIEYnVDI=
+github.com/beranek1/ads-bridge-go-lib v0.0.0-20221206150019-7c3a071ccfe1/go.mod h1:42JjBP4aZgAlOR0IwOwZll8qxBtUt4wCspm4qQNc3oc=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

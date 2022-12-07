@@ -1,86 +1,18 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
-	"io"
-	"net/http"
 	"os"
+	"strconv"
 
+	ads "github.com/beranek1/ads-bridge-go-lib"
 	"github.com/gin-gonic/gin"
 )
 
 var addr = ":8080"
 var adsBridgeAddr = "http://localhost:1234"
 
-func adsProcessResponse(r io.Reader) (map[string]interface{}, error) {
-	body, err := io.ReadAll(r)
-	if err != nil {
-		return nil, err
-	}
-	var dat map[string]interface{}
-	if err := json.Unmarshal(body, &dat); err != nil {
-		return nil, err
-	}
-	return dat, nil
-}
-
-func adsBridgeGetRequest(path string) (map[string]interface{}, error) {
-	var url = adsBridgeAddr + path
-	resp, err := http.Get(url)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	return adsProcessResponse(resp.Body)
-}
-
-func adsBridgePostRequest(path string, jsonStr string) (map[string]interface{}, error) {
-	var url = adsBridgeAddr + path
-	resp, err := http.Post(url, "text/json", bytes.NewBufferString(jsonStr))
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	return adsProcessResponse(resp.Body)
-}
-
-func adsGetVersion() (map[string]interface{}, error) {
-	return adsBridgeGetRequest("/version")
-}
-
-func adsGetState() (map[string]interface{}, error) {
-	return adsBridgeGetRequest("/state")
-}
-
-func adsGetDeviceInfo() (map[string]interface{}, error) {
-	return adsBridgeGetRequest("/deviceInfo")
-}
-
-func adsGetSymbolInfo(name string) (map[string]interface{}, error) {
-	return adsBridgeGetRequest("/getSymbolInfo/" + name)
-}
-
-func adsGetSymbolValue(name string) (map[string]interface{}, error) {
-	return adsBridgeGetRequest("/getSymbolValue/" + name)
-}
-
-func adsSetSymbolValue(name string, value string) (map[string]interface{}, error) {
-	return adsBridgePostRequest("/setSymbolValue/"+name, "{\"data\":"+value+"}")
-}
-
-func adsWriteControl(adsState uint16, deviceState uint16) (map[string]interface{}, error) {
-	if adsState != 0 {
-		if deviceState != 0 {
-			return adsBridgePostRequest("/writeControl", "{\"adsState\":"+string(adsState)+","+"\"deviceState\":"+string(deviceState)+"}")
-		} else {
-			return adsBridgePostRequest("/writeControl", "{\"adsState\":"+string(adsState)+"}")
-		}
-	} else if deviceState != 0 {
-		return adsBridgePostRequest("/writeControl", "{\"deviceState\":"+string(deviceState)+"}")
-	}
-	return adsBridgePostRequest("/writeControl", "{}")
-}
+var adsBridge ads.ADSBridge
 
 func returnADSResult(c *gin.Context, dat map[string]interface{}, err error) {
 	if err != nil {
@@ -99,18 +31,80 @@ func setupRouter() *gin.Engine {
 	r := gin.Default()
 	r.SetTrustedProxies(nil)
 	r.GET("/ads/version", func(c *gin.Context) {
-		dat, err := adsGetVersion()
+		dat, err := adsBridge.GetVersion()
 		returnADSResult(c, dat, err)
 	})
 
 	r.GET("/ads/state", func(c *gin.Context) {
-		dat, err := adsGetState()
+		dat, err := adsBridge.GetState()
 		returnADSResult(c, dat, err)
 	})
 
+	r.POST("/ads/state", func(c *gin.Context) {
+		adsStateStr, hasADS := c.GetPostForm("adsState")
+		deviceStateStr, hasDevice := c.GetPostForm("deviceState")
+		if hasADS {
+			val1, err1 := strconv.ParseUint(adsStateStr, 10, 16)
+			if err1 != nil {
+				c.String(400, "{\"error\":\""+err1.Error()+"\"}")
+			} else {
+				adsState := uint16(val1)
+				if hasDevice {
+					val2, err2 := strconv.ParseUint(deviceStateStr, 10, 16)
+					if err2 != nil {
+						c.String(400, "{\"error\":\""+err2.Error()+"\"}")
+					} else {
+						deviceState := uint16(val2)
+						dat, err := adsBridge.WriteControl(adsState, deviceState)
+						returnADSResult(c, dat, err)
+					}
+				} else {
+					dat, err := adsBridge.WriteControl(adsState, 0)
+					returnADSResult(c, dat, err)
+				}
+			}
+		} else if hasDevice {
+			val1, err1 := strconv.ParseUint(deviceStateStr, 10, 16)
+			if err1 != nil {
+				c.String(400, "{\"error\":\""+err1.Error()+"\"}")
+			} else {
+				deviceState := uint16(val1)
+				dat, err := adsBridge.WriteControl(0, deviceState)
+				returnADSResult(c, dat, err)
+			}
+		} else {
+			dat, err := adsBridge.GetState()
+			returnADSResult(c, dat, err)
+		}
+	})
+
 	r.GET("/ads/deviceInfo", func(c *gin.Context) {
-		dat, err := adsGetDeviceInfo()
+		dat, err := adsBridge.GetDeviceInfo()
 		returnADSResult(c, dat, err)
+	})
+
+	r.GET("/ads/symbolInfo/:name", func(c *gin.Context) {
+		name := c.Param("name")
+		dat, err := adsBridge.GetSymbolInfo(name)
+		returnADSResult(c, dat, err)
+	})
+
+	r.GET("/ads/symbolValue/:name", func(c *gin.Context) {
+		name := c.Param("name")
+		dat, err := adsBridge.GetSymbolValue(name)
+		returnADSResult(c, dat, err)
+	})
+
+	r.POST("/ads/symbolValue/:name", func(c *gin.Context) {
+		name := c.Param("name")
+		dataStr, hasData := c.GetPostForm("data")
+		if hasData {
+			dat, err := adsBridge.SetSymbolValue(name, dataStr)
+			returnADSResult(c, dat, err)
+		} else {
+			dat, err := adsBridge.GetSymbolValue(name)
+			returnADSResult(c, dat, err)
+		}
 	})
 
 	return r
@@ -120,6 +114,11 @@ func main() {
 
 	if len(os.Args) > 1 {
 		addr = os.Args[2]
+	}
+	var err error
+	adsBridge, err = ads.Connect(adsBridgeAddr)
+	if err != nil {
+		println("Error: Specified ADSBridge unavailable due to error: ", err.Error())
 	}
 
 	r := setupRouter()
