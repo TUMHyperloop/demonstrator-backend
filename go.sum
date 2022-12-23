@@ -1,5 +1,9 @@
 github.com/beranek1/ads-bridge-go-lib v0.0.0-20221206150019-7c3a071ccfe1 h1:wA4toa1scwir7WlDKAy3VshH2TOK9x68QfLOIEYnVDI=
 github.com/beranek1/ads-bridge-go-lib v0.0.0-20221206150019-7c3a071ccfe1/go.mod h1:42JjBP4aZgAlOR0IwOwZll8qxBtUt4wCspm4qQNc3oc=
+github.com/beranek1/goconfig v0.0.0-20221210145858-fdc82ab4b3f3 h1:E09aSxuXh6CGumICYbHNLtv5I2d5LFQ74LLa98hR77g=
+github.com/beranek1/goconfig v0.0.0-20221210145858-fdc82ab4b3f3/go.mod h1:wUFFb/bWizvwFbck8y/hWgx75+o+AY40ME/HfeIVtfw=
+github.com/beranek1/godata v0.0.0-20221223092932-b67742ba5c31 h1:RTDjFNsczPz2oBkcb4rdaou4wBunUuceCQsCLuPrYZY=
+github.com/beranek1/godata v0.0.0-20221223092932-b67742ba5c31/go.mod h1:sdABVbkOC+JgeI2gw0LQRr0RbgUKPkHzhtINQfdgLMM=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

@@ -6,6 +6,8 @@ require github.com/gin-gonic/gin v1.8.1
 
 require (
 	github.com/beranek1/ads-bridge-go-lib v0.0.0-20221206150019-7c3a071ccfe1
+	github.com/beranek1/goconfig v0.0.0-20221210145858-fdc82ab4b3f3
+	github.com/beranek1/godata v0.0.0-20221223092932-b67742ba5c31
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
