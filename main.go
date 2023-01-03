@@ -202,11 +202,13 @@ func main() {
 	configManager, err = goconfig.Manage("config")
 	if err != nil {
 		println("Error: goconfig failed managing config directory: ", err.Error())
+		os.Exit(1)
 	}
 
 	dataManager, err = godata.Manage("data")
 	if err != nil {
 		println("Error: godata failed managing data directory: ", err.Error())
+		os.Exit(1)
 	}
 
 	r := setupRouter()
