@@ -18,26 +18,12 @@ var adsBridge ads.ADSBridge
 var configManager goconfig.ConfigManager
 var dataManager godata.DataManager
 
-var adsBackend *ginads.Backend[map[string]interface{}]
+var adsBackend *ginads.Backend
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
 	r.SetTrustedProxies(nil)
-	r.GET("/ads/version", adsBackend.GetVersion)
-
-	r.GET("/ads/state", adsBackend.GetState)
-
-	r.POST("/ads/state", adsBackend.WriteControl)
-
-	r.GET("/ads/deviceInfo", adsBackend.GetDeviceInfo)
-
-	r.POST("/ads/symbolList", adsBackend.ListSymbols)
-
-	r.GET("/ads/symbolInfo/:name", adsBackend.GetSymbolInfo)
-
-	r.GET("/ads/symbolValue/:name", adsBackend.GetSymbolValue)
-
-	r.POST("/ads/symbolValue/:name", adsBackend.SetSymbolValue)
+	adsBackend.AttachToRouter("/ads", r)
 
 	r.GET("/config/:name", func(c *gin.Context) {
 		name := c.Param("name")
@@ -104,7 +90,7 @@ func main() {
 	if err != nil {
 		println("Error: Specified ADSBridge unavailable due to error: ", err.Error())
 	}
-	adsBackend = ginads.Create[map[string]interface{}](adsBridge)
+	adsBackend = ginads.Create(adsBridge)
 
 	configManager, err = goconfig.Manage("config")
 	if err != nil {

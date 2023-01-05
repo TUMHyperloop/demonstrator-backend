@@ -4,9 +4,11 @@ go 1.19
 
 require github.com/gin-gonic/gin v1.8.2
 
+require github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da // indirect
+
 require (
-	github.com/beranek1/ads-bridge-go-lib v0.0.0-20230103184511-6ef4e69225ac
-	github.com/beranek1/ginads v0.0.0-20230103183929-58eb8026e0a7
+	github.com/beranek1/ads-bridge-go-lib v0.0.0-20230105120629-cd3acbe5cbbb
+	github.com/beranek1/ginads v0.0.0-20230105130003-750828be3637
 	github.com/beranek1/goconfig v0.0.0-20221211112905-801890e1b83c
 	github.com/beranek1/godata v0.0.0-20221223111726-afd720f099c5
 	github.com/gin-contrib/sse v0.1.0 // indirect
@@ -21,10 +23,10 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.6 // indirect
 	github.com/ugorji/go/codec v1.2.8 // indirect
-	golang.org/x/crypto v0.4.0 // indirect
-	golang.org/x/net v0.4.0 // indirect
-	golang.org/x/sys v0.3.0 // indirect
-	golang.org/x/text v0.5.0 // indirect
+	golang.org/x/crypto v0.5.0 // indirect
+	golang.org/x/net v0.5.0 // indirect
+	golang.org/x/sys v0.4.0 // indirect
+	golang.org/x/text v0.6.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
