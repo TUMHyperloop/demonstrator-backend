@@ -2,28 +2,28 @@ package main
 
 import (
 	"encoding/json"
-	"os"
+	"flag"
 
 	ads "github.com/beranek1/ads-bridge-go-lib"
 	"github.com/beranek1/ginads"
+	"github.com/beranek1/gindata"
 	"github.com/beranek1/goconfig"
 	"github.com/beranek1/godata"
+	"github.com/beranek1/godatainterface"
 	"github.com/gin-gonic/gin"
 )
 
-var addr = ":8080"
-var adsBridgeAddr = "http://localhost:1234"
-
-var adsBridge ads.ADSBridge
 var configManager goconfig.ConfigManager
-var dataManager godata.DataManager
+var dataStore godatainterface.DataStoreVersionedRangeFromInterval
 
 var adsBackend *ginads.Backend
+var dataStoreBackend *gindata.DataStoreBackend
 
 func setupRouter() *gin.Engine {
 	r := gin.Default()
 	r.SetTrustedProxies(nil)
 	adsBackend.AttachToRouter("/ads", r)
+	dataStoreBackend.AttachToRouter("/data", r)
 
 	r.GET("/config/:name", func(c *gin.Context) {
 		name := c.Param("name")
@@ -62,31 +62,24 @@ func setupRouter() *gin.Engine {
 		}
 	})
 
-	r.GET("/data/:name", func(c *gin.Context) {
-		name := c.Param("name")
-		var data = dataManager.GetData(name)
-		if data != nil {
-			json, err := json.Marshal(data)
-			if err == nil {
-				c.String(200, string(json))
-			} else {
-				c.String(500, "{\"error\":\""+err.Error()+"\"}")
-			}
-		} else {
-			c.String(404, "{\"error\":\"No data found for given key.\"}")
-		}
-	})
-
 	return r
 }
 
 func main() {
+	// Programm arguments
+	var addr string
+	var adsBridgeAddr string
+	var configPath string
+	var dataPath string
 
-	if len(os.Args) > 1 {
-		addr = os.Args[2]
-	}
-	var err error
-	adsBridge, err = ads.Connect(adsBridgeAddr)
+	// Set arguments
+	flag.StringVar(&addr, "addr", ":8080", "target address of backend")
+	flag.StringVar(&adsBridgeAddr, "bridge", "http://localhost:1234", "complete address of ADSBridge with protocol")
+	flag.StringVar(&configPath, "config", "config", "path of config directory")
+	flag.StringVar(&dataPath, "data", "data", "path of data directory")
+	flag.Parse()
+
+	adsBridge, err := ads.Connect(adsBridgeAddr)
 	if err != nil {
 		println("Error: Specified ADSBridge unavailable due to error: ", err.Error())
 	}
@@ -95,14 +88,13 @@ func main() {
 	configManager, err = goconfig.Manage("config")
 	if err != nil {
 		println("Error: goconfig failed managing config directory: ", err.Error())
-		os.Exit(1)
 	}
 
-	dataManager, err = godata.Manage("data")
+	dataStore, err = godata.Create("data")
 	if err != nil {
 		println("Error: godata failed managing data directory: ", err.Error())
-		os.Exit(1)
 	}
+	dataStoreBackend = gindata.CreateDataStoreBackend(dataStore)
 
 	r := setupRouter()
 

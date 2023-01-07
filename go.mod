@@ -9,10 +9,12 @@ require github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da //
 require (
 	github.com/beranek1/ads-bridge-go-lib v0.0.0-20230105120629-cd3acbe5cbbb
 	github.com/beranek1/ginads v0.0.0-20230105130003-750828be3637
+	github.com/beranek1/gindata v0.0.0-20230107123405-74a4fbbce6b2
 	github.com/beranek1/goconfig v0.0.0-20221211112905-801890e1b83c
-	github.com/beranek1/godata v0.0.0-20221223111726-afd720f099c5
+	github.com/beranek1/godata v0.0.0-20230107100430-ac2a9b675395
+	github.com/beranek1/godatainterface v0.0.0-20230107092728-6687f72aae9d
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/go-playground/locales v0.14.0 // indirect
+	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.11.1 // indirect
 	github.com/goccy/go-json v0.10.0 // indirect

@@ -6,12 +6,18 @@ github.com/beranek1/ginads v0.0.0-20230103183929-58eb8026e0a7 h1:ZIQ5Zgdqf56vRqC
 github.com/beranek1/ginads v0.0.0-20230103183929-58eb8026e0a7/go.mod h1:K1jVs7SUeEPE7nIbYbY+BAtokmLqZWqMyTJKBcsa6hw=
 github.com/beranek1/ginads v0.0.0-20230105130003-750828be3637 h1:HdBqQYm0Kb4LYEXs/ll0YZNLaDL/ekfqJj7O5pqd3uA=
 github.com/beranek1/ginads v0.0.0-20230105130003-750828be3637/go.mod h1:MWMBvdX9+swStiOtGoZn1nlDWswEvMOaMkEM87YT0lc=
+github.com/beranek1/gindata v0.0.0-20230107123405-74a4fbbce6b2 h1:WVrMV705M41QJPyWxFiN3QP8trvZx/Jku123N7YRH+Y=
+github.com/beranek1/gindata v0.0.0-20230107123405-74a4fbbce6b2/go.mod h1:suI6/Ns2jXRIBm2tb1mSt9wjh2i/0st/H7IlIODWPAU=
 github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da h1:fq4pNpCG8raqjV19XZXCd6Y0b25bc/X1M2tMN8RbYU0=
 github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da/go.mod h1:ub4bkDQEY0EAJ0QLFfiNXmL+QYSv3VHvWRl3QXlfs2o=
 github.com/beranek1/goconfig v0.0.0-20221211112905-801890e1b83c h1:zD0ZpdqJIKLIYRco4EeqUs9SSJfXugBViHzhGnYFRkI=
 github.com/beranek1/goconfig v0.0.0-20221211112905-801890e1b83c/go.mod h1:wUFFb/bWizvwFbck8y/hWgx75+o+AY40ME/HfeIVtfw=
 github.com/beranek1/godata v0.0.0-20221223111726-afd720f099c5 h1:yM9wAhWcvNo0pEcIhDGWd4eaD7GHI9SNVL+AvRfWe2E=
 github.com/beranek1/godata v0.0.0-20221223111726-afd720f099c5/go.mod h1:sdABVbkOC+JgeI2gw0LQRr0RbgUKPkHzhtINQfdgLMM=
+github.com/beranek1/godata v0.0.0-20230107100430-ac2a9b675395 h1:xWzJRiCKYjVErZdi9k/KBiiZgibPdlT4YIwT7P7q+pk=
+github.com/beranek1/godata v0.0.0-20230107100430-ac2a9b675395/go.mod h1:gX81cyiesRr+ZagLgmk+rYkQ9edOzFKkv2wBFoenHCM=
+github.com/beranek1/godatainterface v0.0.0-20230107092728-6687f72aae9d h1:qfldrROd4VGPBmIq4Q0b0uu3Ms2x25Qn6d37l7zObmA=
+github.com/beranek1/godatainterface v0.0.0-20230107092728-6687f72aae9d/go.mod h1:UVuV0xVRfKfAQNJRM3hqc6KKMcpjJ7NSaYmsJvCGc8Y=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
@@ -24,6 +30,8 @@ github.com/go-playground/assert/v2 v2.0.1 h1:MsBgLAaY856+nPRTKrp3/OZK38U/wa0CcBY
 github.com/go-playground/assert/v2 v2.0.1/go.mod h1:VDjEfimB/XKnb+ZQfWdccd7VUvScMdVu0Titje2rxJ4=
 github.com/go-playground/locales v0.14.0 h1:u50s323jtVGugKlcYeyzC0etD1HifMjqmJqb8WugfUU=
 github.com/go-playground/locales v0.14.0/go.mod h1:sawfccIbzZTqEDETgFXqTho0QybSa7l++s0DH+LDiLs=
+github.com/go-playground/locales v0.14.1 h1:EWaQ/wswjilfKLTECiXz7Rh+3BjFhfDFKv/oXslEjJA=
+github.com/go-playground/locales v0.14.1/go.mod h1:hxrqLVvrK65+Rwrd5Fc6F2O76J/NuW9t0sjnWqG1slY=
 github.com/go-playground/universal-translator v0.18.0 h1:82dyy6p4OuJq4/CByFNOn/jYrnRPArHwAcmLoJZxyho=
 github.com/go-playground/universal-translator v0.18.0/go.mod h1:UvRDBj+xPUEGrFYl+lu/H90nyDXpg0fqeB/AQUGNTVA=
 github.com/go-playground/validator/v10 v10.11.1 h1:prmOlTVv+YjZjmRmNSF3VmspqJIxJWXmqUsHwfTRRkQ=
