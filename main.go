@@ -3,10 +3,12 @@ package main
 import (
 	"encoding/json"
 	"flag"
+	"time"
 
 	ads "github.com/beranek1/ads-bridge-go-lib"
 	"github.com/beranek1/ginads"
 	"github.com/beranek1/gindata"
+	"github.com/beranek1/gocollector"
 	"github.com/beranek1/goconfig"
 	"github.com/beranek1/godata"
 	"github.com/beranek1/godatainterface"
@@ -96,7 +98,12 @@ func main() {
 	}
 	dataStoreBackend = gindata.CreateDataStoreBackend(dataStore)
 
+	adsSource := &AdsSource{adsBridge}
+	collector := gocollector.Create(adsSource, dataStore, 100*time.Millisecond)
+	collector.Start()
+
 	r := setupRouter()
 
 	r.Run(addr)
+	collector.Stop()
 }

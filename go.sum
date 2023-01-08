@@ -10,12 +10,16 @@ github.com/beranek1/gindata v0.0.0-20230107123405-74a4fbbce6b2 h1:WVrMV705M41QJP
 github.com/beranek1/gindata v0.0.0-20230107123405-74a4fbbce6b2/go.mod h1:suI6/Ns2jXRIBm2tb1mSt9wjh2i/0st/H7IlIODWPAU=
 github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da h1:fq4pNpCG8raqjV19XZXCd6Y0b25bc/X1M2tMN8RbYU0=
 github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da/go.mod h1:ub4bkDQEY0EAJ0QLFfiNXmL+QYSv3VHvWRl3QXlfs2o=
+github.com/beranek1/gocollector v0.0.0-20230107092947-bf7dba5492de h1:8MwcbMsqeVHalHpj1T/3p/nUZ+T7GZRqlVSb+z6+YQE=
+github.com/beranek1/gocollector v0.0.0-20230107092947-bf7dba5492de/go.mod h1:Zzt6PkuP5QUasSehggZaDN1XXL5jVFaFuLZh2dPlEzE=
 github.com/beranek1/goconfig v0.0.0-20221211112905-801890e1b83c h1:zD0ZpdqJIKLIYRco4EeqUs9SSJfXugBViHzhGnYFRkI=
 github.com/beranek1/goconfig v0.0.0-20221211112905-801890e1b83c/go.mod h1:wUFFb/bWizvwFbck8y/hWgx75+o+AY40ME/HfeIVtfw=
 github.com/beranek1/godata v0.0.0-20221223111726-afd720f099c5 h1:yM9wAhWcvNo0pEcIhDGWd4eaD7GHI9SNVL+AvRfWe2E=
 github.com/beranek1/godata v0.0.0-20221223111726-afd720f099c5/go.mod h1:sdABVbkOC+JgeI2gw0LQRr0RbgUKPkHzhtINQfdgLMM=
 github.com/beranek1/godata v0.0.0-20230107100430-ac2a9b675395 h1:xWzJRiCKYjVErZdi9k/KBiiZgibPdlT4YIwT7P7q+pk=
 github.com/beranek1/godata v0.0.0-20230107100430-ac2a9b675395/go.mod h1:gX81cyiesRr+ZagLgmk+rYkQ9edOzFKkv2wBFoenHCM=
+github.com/beranek1/godata v0.0.0-20230108093012-cc94078a8b4e h1:da1LiK3HGpxh4hmQHlUetpo+GB9CPHJAA3bm4Kdx8l8=
+github.com/beranek1/godata v0.0.0-20230108093012-cc94078a8b4e/go.mod h1:gX81cyiesRr+ZagLgmk+rYkQ9edOzFKkv2wBFoenHCM=
 github.com/beranek1/godatainterface v0.0.0-20230107092728-6687f72aae9d h1:qfldrROd4VGPBmIq4Q0b0uu3Ms2x25Qn6d37l7zObmA=
 github.com/beranek1/godatainterface v0.0.0-20230107092728-6687f72aae9d/go.mod h1:UVuV0xVRfKfAQNJRM3hqc6KKMcpjJ7NSaYmsJvCGc8Y=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
