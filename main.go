@@ -5,9 +5,9 @@ import (
 	"flag"
 	"time"
 
-	ads "github.com/beranek1/ads-bridge-go-lib"
 	"github.com/beranek1/ginads"
 	"github.com/beranek1/gindata"
+	"github.com/beranek1/goads"
 	"github.com/beranek1/gocollector"
 	"github.com/beranek1/goconfig"
 	"github.com/beranek1/godata"
@@ -70,22 +70,22 @@ func setupRouter() *gin.Engine {
 func main() {
 	// Programm arguments
 	var addr string
-	var adsBridgeAddr string
+	var adsTargetAddr string
 	var configPath string
 	var dataPath string
 
 	// Set arguments
 	flag.StringVar(&addr, "addr", ":8080", "target address of backend")
-	flag.StringVar(&adsBridgeAddr, "bridge", "http://localhost:1234", "complete address of ADSBridge with protocol")
+	flag.StringVar(&adsTargetAddr, "target", "192.168.178.34.1.1:851", "target address of TwinCAT ADS device")
 	flag.StringVar(&configPath, "config", "config", "path of config directory")
 	flag.StringVar(&dataPath, "data", "data", "path of data directory")
 	flag.Parse()
 
-	adsBridge, err := ads.Connect(adsBridgeAddr)
+	adsLib, err := goads.NewAdsLib("127.0.0.1", adsTargetAddr)
 	if err != nil {
-		println("Error: Specified ADSBridge unavailable due to error: ", err.Error())
+		println("Error: Specified ADS service or device unavailable: ", err.Error())
 	}
-	adsBackend = ginads.Create(adsBridge)
+	adsBackend = ginads.Create(adsLib)
 
 	configManager, err = goconfig.Manage("config")
 	if err != nil {
@@ -98,7 +98,7 @@ func main() {
 	}
 	dataStoreBackend = gindata.CreateDataStoreBackend(dataStore)
 
-	adsSource := &AdsSource{adsBridge}
+	adsSource := &AdsSource{adsLib}
 	collector := gocollector.Create(adsSource, dataStore, 100*time.Millisecond)
 	collector.Start()
 
