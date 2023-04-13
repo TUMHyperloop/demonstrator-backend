@@ -4,6 +4,8 @@ github.com/beranek1/gindata v0.0.0-20230405095842-b401de421683 h1:jX2RiNCesf6RLg
 github.com/beranek1/gindata v0.0.0-20230405095842-b401de421683/go.mod h1:7aVWlCbaQhVzGSrW2i2Sfmhh4O6nJ5Jtzoa9R5pQ2bc=
 github.com/beranek1/goads v0.0.0-20230409090858-1671b870ae10 h1:HTg0QuOhqeMLP06yjM2DzGxPos1oIhd55GdePnCzCAQ=
 github.com/beranek1/goads v0.0.0-20230409090858-1671b870ae10/go.mod h1:QKx6nd2DpafIhCWi0gFNAy6/nCovimeThhqIIBEJZ9s=
+github.com/beranek1/goads v0.0.0-20230413174059-f9c7257c43be h1:b7jzp8+5ocpzM5lzz83eEvqOigEvqs65Fqv+glxcEH8=
+github.com/beranek1/goads v0.0.0-20230413174059-f9c7257c43be/go.mod h1:QKx6nd2DpafIhCWi0gFNAy6/nCovimeThhqIIBEJZ9s=
 github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da h1:fq4pNpCG8raqjV19XZXCd6Y0b25bc/X1M2tMN8RbYU0=
 github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da/go.mod h1:ub4bkDQEY0EAJ0QLFfiNXmL+QYSv3VHvWRl3QXlfs2o=
 github.com/beranek1/gocollector v0.0.0-20230107092947-bf7dba5492de h1:8MwcbMsqeVHalHpj1T/3p/nUZ+T7GZRqlVSb+z6+YQE=

@@ -3,7 +3,7 @@ module github.com/TUMHyperloop/demonstrator-backend
 go 1.20
 
 require (
-	github.com/beranek1/goads v0.0.0-20230409090858-1671b870ae10
+	github.com/beranek1/goads v0.0.0-20230413174059-f9c7257c43be
 	github.com/beranek1/goadsinterface v0.0.0-20230105105719-97e09fc885da
 	github.com/beranek1/gocollector v0.0.0-20230107092947-bf7dba5492de
 	github.com/gin-gonic/gin v1.9.0
