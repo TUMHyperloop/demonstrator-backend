@@ -1,4 +1,4 @@
-module github.com/TUMHyperloop/demonstrator-backend
+module github.com/beranek1/demonstrator-backend
 
 go 1.20
 
