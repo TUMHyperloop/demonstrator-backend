@@ -84,6 +84,7 @@ func main() {
 	adsLib, err := goads.NewAdsLib("127.0.0.1", adsTargetAddr)
 	if err != nil {
 		println("Error: Specified ADS service or device unavailable: ", err.Error())
+		return
 	}
 	adsBackend = ginads.Create(adsLib)
 
